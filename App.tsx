@@ -4,6 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { SplashScreen } from './screens/splashScreen'; 
 import { Login } from './screens/login';
 import { Main } from './screens/main';
+import { Ionicons } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -28,7 +30,21 @@ export default function App() {
         <Stack.Screen
           name="Main"
           component={Main}
-          options={{headerShown: false}}/>
+          options={{
+            headerRight: () => (
+              <TouchableOpacity>
+                <Ionicons 
+                  name="person" 
+                  size={24} 
+                  color="white" 
+                  style={{ marginRight: 15 }} />
+              </TouchableOpacity>
+            ),
+            headerStyle: {
+              backgroundColor: '#153548',
+            },
+            headerTintColor: 'white', 
+          }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
